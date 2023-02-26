@@ -42,8 +42,11 @@ ifeq ($(BOARD_KERNEL_COMMON),true)
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sdm660
 endif
 TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_ADDITIONAL_FLAGS := \
-    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
+TARGET_KERNEL_LLVM_BINUTILS := false
+
+# Additional Kernel Flags
+TARGET_KERNEL_ADDITIONAL_FLAGS +=
+HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument" LLVM=1 LLVM_IAS=1
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
